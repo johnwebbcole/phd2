@@ -890,7 +890,7 @@ endif()  # APPLE
 if(UNIX AND NOT APPLE)
 
  if (CMAKE_SYSTEM_PROCESSOR MATCHES "^arm(.*)")
-    set(arch "armv6")
+    set(arch "armv7")
  else()
   if(CMAKE_SIZEOF_VOID_P EQUAL 8) 
     set(arch "x64") 
