@@ -28,6 +28,28 @@
 
 # File created by Raffi Enficiaud
 
+# the complete system name, e.g. "Linux-2.4.22", "FreeBSD-5.4-RELEASE" or "Windows 5.1" 
+MESSAGE( STATUS "CMAKE_SYSTEM: " ${CMAKE_SYSTEM} )
+
+# the short system name, e.g. "Linux", "FreeBSD" or "Windows"
+MESSAGE( STATUS "CMAKE_SYSTEM_NAME: " ${CMAKE_SYSTEM_NAME} )
+
+# only the version part of CMAKE_SYSTEM 
+MESSAGE( STATUS "CMAKE_SYSTEM_VERSION: " ${CMAKE_SYSTEM_VERSION} )
+
+# the processor name (e.g. "Intel(R) Pentium(R) M processor 2.00GHz") 
+MESSAGE( STATUS "CMAKE_SYSTEM_PROCESSOR: " ${CMAKE_SYSTEM_PROCESSOR} )
+
+# is TRUE on all UNIX-like OS's, including Apple OS X and CygWin
+MESSAGE( STATUS "UNIX: " ${UNIX} )
+
+# is TRUE on Windows, including CygWin 
+MESSAGE( STATUS "WIN32: " ${WIN32} )
+
+# is TRUE on Apple OS X
+MESSAGE( STATUS "APPLE: " ${APPLE} )
+
+
 set(thirdparty_dir ${CMAKE_SOURCE_DIR}/thirdparty)
 
 # the location where the archives will be deflated
@@ -890,7 +912,12 @@ endif()  # APPLE
 if(UNIX AND NOT APPLE)
 
  if (CMAKE_SYSTEM_PROCESSOR MATCHES "^arm(.*)")
-    set(arch "armv7")
+    if (CMAKE_SYSTEM_PROCESSOR MATCHES "armv7l")
+        MESSAGE( STATUS "arach: armv8" )
+        set(arch "armv8")
+    else()
+        set(arch "armv7")
+    endif()
  else()
   if(CMAKE_SIZEOF_VOID_P EQUAL 8) 
     set(arch "x64") 

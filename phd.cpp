@@ -55,8 +55,8 @@ GuideCamera *pCamera = NULL;
 DebugLog Debug;
 GuidingLog GuideLog;
 
-int XWinSize = 640;
-int YWinSize = 512;
+int XWinSize = 740;
+int YWinSize = 400;
 
 static const wxCmdLineEntryDesc cmdLineDesc[] =
 {
