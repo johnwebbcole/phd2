@@ -184,7 +184,7 @@ AdvancedDialog::AdvancedDialog(MyFrame *pFrame) :
 
     // Ok and cancel buttons for the entire dialog box
     wxBoxSizer *pTopLevelSizer = new wxBoxSizer(wxVERTICAL);
-    pTopLevelSizer->Add(m_pNotebook, wxSizerFlags(0); //.Expand().Border(wxALL, 5));
+    pTopLevelSizer->Add(m_pNotebook, wxSizerFlags(0).Expand()); // .Border(wxALL, 5));
     pTopLevelSizer->Add(CreateButtonSizer(wxOK | wxCANCEL), wxSizerFlags(0)); //.Expand().Border(wxALL, 5));
     SetSizerAndFit(pTopLevelSizer);
 

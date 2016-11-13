@@ -812,12 +812,13 @@ void MyFrame::SetupToolBar()
     // provide translated strings for dur_choices here since cannot use _() in static initializer
     dur_choices[0] = _("Auto");
 
+    //Dur_Choice = new OptionsButton(this,BUTTON_DURATION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     Dur_Choice = new wxComboBox(MainToolbar, BUTTON_DURATION, wxEmptyString, wxDefaultPosition, wxDefaultSize,
         WXSIZEOF(dur_choices), dur_choices, wxCB_READONLY);
     Dur_Choice->SetToolTip(_("Camera exposure duration"));
     SetComboBoxWidth(Dur_Choice, 40);
 
-    Gamma_Slider = new wxSlider(MainToolbar, CTRL_GAMMA, GAMMA_DEFAULT, GAMMA_MIN, GAMMA_MAX, wxPoint(-1,-1), wxSize(160,-1));
+    Gamma_Slider = new wxSlider(MainToolbar, CTRL_GAMMA, GAMMA_DEFAULT, GAMMA_MIN, GAMMA_MAX, wxPoint(-1,-1), wxSize(-1,80), wxSL_VERTICAL);
     Gamma_Slider->SetBackgroundColour(wxColor(60, 60, 60));         // Slightly darker than toolbar background
     Gamma_Slider->SetToolTip(_("Screen gamma (brightness)"));
 

@@ -71,8 +71,8 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
 {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
-    wxBoxSizer *pMainSizer   = new wxBoxSizer(wxHORIZONTAL);
-    wxBoxSizer *pButtonSizer = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer *pMainSizer   = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer *pButtonSizer = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer *pClientSizer = new wxBoxSizer(wxVERTICAL);
 
     m_pClient = new GraphLogClientWindow(this);

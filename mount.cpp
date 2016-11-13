@@ -126,7 +126,7 @@ void Mount::MountConfigDialogPane::LayoutControls(wxPanel *pParent, BrainCtrlIdM
         if (m_pDecBox)
             m_pDecBox->Clear(true);
         m_pDecBox = new wxStaticBoxSizer(wxVERTICAL, m_pParent, _("Declination"));
-        wxSizerFlags def_flags = wxSizerFlags(0); //.Border(wxALL, 10).Expand();
+        wxSizerFlags def_flags = wxSizerFlags(0).Expand(); //.Border(wxALL, 10).Expand();
 
         wxString xAlgorithms[] =
         {
