@@ -126,9 +126,9 @@ void Mount::MountConfigDialogPane::LayoutControls(wxPanel *pParent, BrainCtrlIdM
         if (m_pDecBox)
             m_pDecBox->Clear(true);
         m_pDecBox = new wxStaticBoxSizer(wxVERTICAL, m_pParent, _("Declination"));
-        wxSizerFlags def_flags = wxSizerFlags(0).Border(wxALL, 10).Expand();
+        wxSizerFlags def_flags = wxSizerFlags(0); //.Border(wxALL, 10).Expand();
 
-        wxString xAlgorithms[] = 
+        wxString xAlgorithms[] =
         {
             _("None"), _("Hysteresis"), _("Lowpass"), _("Lowpass2"), _("Resist Switch"),
 #if defined(MPIIS_GAUSSIAN_PROCESS_GUIDING_ENABLED__)
@@ -167,7 +167,7 @@ void Mount::MountConfigDialogPane::LayoutControls(wxPanel *pParent, BrainCtrlIdM
         else
             m_pRABox->Add(m_pResetRAParams, wxSizerFlags(0).Border(wxTOP, 20).Center());
 
-        wxString yAlgorithms[] = 
+        wxString yAlgorithms[] =
         {
             _("None"), _("Hysteresis"), _("Lowpass"), _("Lowpass2"), _("Resist Switch"),
 #if defined(MPIIS_GAUSSIAN_PROCESS_GUIDING_ENABLED__)
@@ -366,7 +366,7 @@ MountConfigDialogCtrlSet *Mount::GetConfigDialogCtrlSet(wxWindow *pParent, Mount
     return new MountConfigDialogCtrlSet(pParent, pMount, pAdvancedDialog, CtrlMap);
 }
 
-// These are only controls that are exported to other panes - all the other dynamically updated controls are handled in 
+// These are only controls that are exported to other panes - all the other dynamically updated controls are handled in
 // ConfigDialogPane
 MountConfigDialogCtrlSet::MountConfigDialogCtrlSet(wxWindow *pParent, Mount *pMount, AdvancedDialog *pAdvancedDialog, BrainCtrlIdMap& CtrlMap) :
 ConfigDialogCtrlSet(pParent, pAdvancedDialog, CtrlMap)
@@ -483,7 +483,7 @@ bool Mount::CreateGuideAlgorithm(int guideAlgorithm, Mount *mount, GuideAxis axi
             case GUIDE_ALGORITHM_LOWPASS:
             case GUIDE_ALGORITHM_LOWPASS2:
             case GUIDE_ALGORITHM_RESIST_SWITCH:
-#if defined(MPIIS_GAUSSIAN_PROCESS_GUIDING_ENABLED__)            
+#if defined(MPIIS_GAUSSIAN_PROCESS_GUIDING_ENABLED__)
             case GUIDE_ALGORITHM_GAUSSIAN_PROCESS:
 #endif
                 break;
@@ -517,8 +517,8 @@ bool Mount::CreateGuideAlgorithm(int guideAlgorithm, Mount *mount, GuideAxis axi
         case GUIDE_ALGORITHM_RESIST_SWITCH:
             *ppAlgorithm = new GuideAlgorithmResistSwitch(mount, axis);
             break;
-            
-#if defined(MPIIS_GAUSSIAN_PROCESS_GUIDING_ENABLED__)            
+
+#if defined(MPIIS_GAUSSIAN_PROCESS_GUIDING_ENABLED__)
         case GUIDE_ALGORITHM_GAUSSIAN_PROCESS:
             *ppAlgorithm = new GuideGaussianProcess(mount, axis);
             break;

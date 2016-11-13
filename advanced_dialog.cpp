@@ -95,11 +95,11 @@ AdvancedDialog::AdvancedDialog(MyFrame *pFrame) :
      *
      * Each tab of the notebook contains one or more ConfigDialogPane(s) which are basically vertical
      * sizers to hold a bunch of UI controls.  The UI controls are constructed and managed by ConfigDialogCtrlSet
-     * objects.  These reflect the internal organization of the app and generally bind one-to-one with the major internal 
+     * objects.  These reflect the internal organization of the app and generally bind one-to-one with the major internal
      * classes: MyFrame, Guider, Camera, Mount, Scope, AO, Rotator, etc.  The controls created by the ConfigDialogCtrlSet
      * objects are laid out on the various panes by the ConfigDialogPane instances.  So there is a level of indirection here
      * such that the controls can generally be placed anywhere, and the ConfigDialogCtrlSet objects don't care.  This means the
-     * overall UI can be optimized for end-users while allowing the underlying controls to reside where they should from an 
+     * overall UI can be optimized for end-users while allowing the underlying controls to reside where they should from an
      * internal architecture perspective.
      * +------------------------------------+------------------------------------+
      * | |   Notebook tabs                                                    |  |
@@ -184,8 +184,8 @@ AdvancedDialog::AdvancedDialog(MyFrame *pFrame) :
 
     // Ok and cancel buttons for the entire dialog box
     wxBoxSizer *pTopLevelSizer = new wxBoxSizer(wxVERTICAL);
-    pTopLevelSizer->Add(m_pNotebook, wxSizerFlags(0).Expand().Border(wxALL, 5));
-    pTopLevelSizer->Add(CreateButtonSizer(wxOK | wxCANCEL), wxSizerFlags(0).Expand().Border(wxALL, 5));
+    pTopLevelSizer->Add(m_pNotebook, wxSizerFlags(0); //.Expand().Border(wxALL, 5));
+    pTopLevelSizer->Add(CreateButtonSizer(wxOK | wxCANCEL), wxSizerFlags(0)); //.Expand().Border(wxALL, 5));
     SetSizerAndFit(pTopLevelSizer);
 
     m_rebuildPanels = false;
@@ -229,7 +229,7 @@ void AdvancedDialog::RebuildPanels(void)
 
     m_pGlobalPane->Clear(true);
     m_pCameraPane->Clear(true);
-    
+
     m_pCameraSettingsPanel->GetSizer()->Clear(true);
     m_pGuiderPane->Clear(true);
 
@@ -260,7 +260,7 @@ void AdvancedDialog::RebuildPanels(void)
 
     m_pGuiderPane->LayoutControls(m_pFrame->pGuider, m_brainCtrls);     // Guider pane doesn't have specific device dependencies
     m_pGuiderPane->Layout();
- 
+
     AddMountPage();
 
     AddAoPage();            // Will handle no AO case
