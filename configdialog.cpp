@@ -35,7 +35,7 @@
 #include "phd.h"
 
 ConfigDialogPane::ConfigDialogPane(const wxString& heading, wxWindow *pParent)
-    : wxStaticBoxSizer(new wxStaticBox(pParent, wxID_ANY, heading), wxVERTICAL)
+    : wxBoxSizer(wxVERTICAL)
 {
     m_pParent = pParent;
 }

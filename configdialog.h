@@ -111,7 +111,7 @@ struct BrainCtrlInfo
 
 typedef std::map<BRAIN_CTRL_IDS, BrainCtrlInfo> BrainCtrlIdMap;
 
-class ConfigDialogPane : public wxStaticBoxSizer
+class ConfigDialogPane : public wxBoxSizer
 {
 protected:
     wxWindow *m_pParent;
