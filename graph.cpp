@@ -228,7 +228,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
 
     pClientSizer->Add(m_pClient, wxSizerFlags().Expand().Proportion(1));
     pClientSizer->Add(m_pControlSizer, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT | wxBOTTOM, 10));
-    pMainSizer->Add(pButtonSizer, wxSizerFlags().Left().DoubleHorzBorder().Expand());
+    pMainSizer->Add(pButtonSizer, wxSizerFlags().DoubleHorzBorder().Expand());
     pMainSizer->Add(pButtonSizerRow2, wxSizerFlags().Left().DoubleHorzBorder().Expand());
     pMainSizer->Add(pClientSizer, wxSizerFlags().Expand().Proportion(1));
 
