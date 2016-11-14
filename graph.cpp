@@ -73,6 +73,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
 
     wxBoxSizer *pMainSizer   = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer *pButtonSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *pButtonSizerRow2 = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer *pClientSizer = new wxBoxSizer(wxVERTICAL);
 
     m_pClient = new GraphLogClientWindow(this);
@@ -168,7 +169,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     pLabelSizer->AddStretchSpacer();
     pLabelSizer->Add(m_pLabel2, wxSizerFlags().Right());
 
-    pButtonSizer->Add(pLabelSizer, wxSizerFlags().Expand());
+    pButtonSizerRow2->Add(pLabelSizer, wxSizerFlags().Expand());
 
     wxStaticText *lbl;
 
@@ -176,7 +177,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     OSX_SMALL_FONT(lbl);
     lbl->SetForegroundColour(*wxLIGHT_GREY);
     lbl->SetBackgroundColour(*wxBLACK);
-    pButtonSizer->Add(lbl);
+    pButtonSizerRow2->Add(lbl);
 
     wxSize size1 = GetTextExtent(_T("XXXX"));
 
@@ -191,7 +192,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     m_pClient->m_pRaRMS->SetBackgroundColour(*wxBLACK);
     szRaRMS->Add(lbl, wxSizerFlags().Border(wxRIGHT, 5));
     szRaRMS->Add(m_pClient->m_pRaRMS);
-    pButtonSizer->Add(szRaRMS);
+    pButtonSizerRow2->Add(szRaRMS);
 
     wxBoxSizer *szDecRMS = new wxBoxSizer(wxHORIZONTAL);
     lbl = new wxStaticText(this, wxID_ANY, _("Dec"), wxDefaultPosition, size1, wxALIGN_RIGHT);
@@ -204,7 +205,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     m_pClient->m_pDecRMS->SetBackgroundColour(*wxBLACK);
     szDecRMS->Add(lbl, wxSizerFlags().Border(wxRIGHT, 5));
     szDecRMS->Add(m_pClient->m_pDecRMS);
-    pButtonSizer->Add(szDecRMS);
+    pButtonSizerRow2->Add(szDecRMS);
 
     wxBoxSizer *szTotRMS = new wxBoxSizer(wxHORIZONTAL);
     lbl = new wxStaticText(this, wxID_ANY, _("Tot"), wxDefaultPosition, size1, wxALIGN_RIGHT);
@@ -217,17 +218,18 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     m_pClient->m_pTotRMS->SetBackgroundColour(*wxBLACK);
     szTotRMS->Add(lbl, wxSizerFlags().Border(wxRIGHT, 5));
     szTotRMS->Add(m_pClient->m_pTotRMS);
-    pButtonSizer->Add(szTotRMS);
+    pButtonSizerRow2->Add(szTotRMS);
 
     m_pClient->m_pOscIndex = new wxStaticText(this, wxID_ANY, _("RA Osc: 0.00"));
     OSX_SMALL_FONT(m_pClient->m_pOscIndex);
     m_pClient->m_pOscIndex->SetForegroundColour(*wxLIGHT_GREY);
     m_pClient->m_pOscIndex->SetBackgroundColour(*wxBLACK);
-    pButtonSizer->Add(m_pClient->m_pOscIndex);
+    pButtonSizerRow2->Add(m_pClient->m_pOscIndex);
 
     pClientSizer->Add(m_pClient, wxSizerFlags().Expand().Proportion(1));
     pClientSizer->Add(m_pControlSizer, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT | wxBOTTOM, 10));
     pMainSizer->Add(pButtonSizer, wxSizerFlags().Left().DoubleHorzBorder().Expand());
+    pMainSizer->Add(pButtonSizerRow2, wxSizerFlags().Left().DoubleHorzBorder().Expand());
     pMainSizer->Add(pClientSizer, wxSizerFlags().Expand().Proportion(1));
 
     SetSizer(pMainSizer);

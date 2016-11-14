@@ -812,8 +812,8 @@ void MyFrame::SetupToolBar()
     // provide translated strings for dur_choices here since cannot use _() in static initializer
     dur_choices[0] = _("Auto");
 
-    //Dur_Choice = new OptionsButton(this,BUTTON_DURATION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    Dur_Choice = new wxComboBox(MainToolbar, BUTTON_DURATION, wxEmptyString, wxDefaultPosition, wxDefaultSize,
+    //Dur_Choice = new OptionsButton(MainToolbar,BUTTON_DURATION, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+    Dur_Choice = new wxComboBox(MainToolbar, BUTTON_DURATION, wxEmptyString, wxDefaultPosition, wxSize(40,-1),
         WXSIZEOF(dur_choices), dur_choices, wxCB_READONLY);
     Dur_Choice->SetToolTip(_("Camera exposure duration"));
     SetComboBoxWidth(Dur_Choice, 40);
@@ -1082,7 +1082,7 @@ void MyFrame::Alert(const wxString& msg, alert_fn *DontShowFn, const wxString& b
     }
 }
 
-// Standardized version for building an alert that has the "don't show again" option button.  Insures that debug log entry is made if 
+// Standardized version for building an alert that has the "don't show again" option button.  Insures that debug log entry is made if
 // the user has blocked the alert for this type of problem
 void MyFrame::SuppressableAlert(const wxString& configPropKey, const wxString& msg, alert_fn *dontShowFn, long arg, bool showHelpButton, int flags)
 {
@@ -2440,7 +2440,7 @@ void MyFrame::RegisterTextCtrl(wxTextCtrl *ctrl)
     ctrl->Bind(wxEVT_KILL_FOCUS, &MyFrame::OnTextControlKillFocus, this);
 }
 
-// Reset the guiding parameters and the various graphical displays when binning changes.  This should be done when guiding starts 
+// Reset the guiding parameters and the various graphical displays when binning changes.  This should be done when guiding starts
 // so the user can experiment with binning without losing guider settings
 void MyFrame::HandleBinningChange()
 {
@@ -2500,11 +2500,11 @@ MyFrameConfigDialogCtrlSet::MyFrameConfigDialogCtrlSet(MyFrame *pFrame, Advanced
 {
     int width;
     wxWindow *parent;
-    
+
     m_pFrame = pFrame;
     m_pResetConfiguration = new wxCheckBox(GetParentWindow(AD_cbResetConfig), wxID_ANY, _("Reset Configuration"));
     AddCtrl(CtrlMap, AD_cbResetConfig, m_pResetConfiguration, _("Reset all configuration and program settings to fresh install status -- Note: this closes PHD2"));
-    m_pResetDontAskAgain = new wxCheckBox(GetParentWindow(AD_cbDontAsk), wxID_ANY, _("Reset \"Don't Show Again\" messages")); 
+    m_pResetDontAskAgain = new wxCheckBox(GetParentWindow(AD_cbDontAsk), wxID_ANY, _("Reset \"Don't Show Again\" messages"));
     AddCtrl(CtrlMap, AD_cbDontAsk, m_pResetDontAskAgain, _("Restore any messages that were hidden when you checked \"Don't show this again\"."));
 
     wxString img_formats[] =
@@ -2791,7 +2791,7 @@ void MyFrame::PlaceWindowOnScreen(wxWindow *win, int x, int y)
         win->Move(x, y);
 }
 
-// The spin control factories allow clients to specify a width based on the max width of the numeric values without having 
+// The spin control factories allow clients to specify a width based on the max width of the numeric values without having
 // to make guesses about the additional space required by the other parts of the control
 wxSpinCtrl* MyFrame::MakeSpinCtrl(wxWindow *parent, wxWindowID id, const wxString& value,
     const wxPoint& pos, const wxSize& size, long style,
