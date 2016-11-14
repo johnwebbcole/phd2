@@ -116,7 +116,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     m_pLengthButton = new OptionsButton(this,BUTTON_GRAPH_LENGTH, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     m_pLengthButton->SetToolTip(_("Select the number of frames of history to display on the X-axis"));
     m_pLengthButton->SetLabel(wxString::Format(_T("x:%3d"), m_pClient->m_length));
-    pButtonSizer->Add(m_pLengthButton, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT, 5));
+    pButtonSizer->Add(m_pLengthButton, wxSizerFlags().Border(wxRIGHT | wxLEFT, 5).Expand());
 
     m_pHeightButton = new OptionsButton(this,BUTTON_GRAPH_HEIGHT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     m_heightButtonLabelVal = 0;
