@@ -116,21 +116,21 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
     m_pLengthButton = new OptionsButton(this,BUTTON_GRAPH_LENGTH, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     m_pLengthButton->SetToolTip(_("Select the number of frames of history to display on the X-axis"));
     m_pLengthButton->SetLabel(wxString::Format(_T("x:%3d"), m_pClient->m_length));
-    pButtonSizer->Add(m_pLengthButton, wxSizerFlags().Expand());
+    pButtonSizer->Add(m_pLengthButton, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT, 5));
 
     m_pHeightButton = new OptionsButton(this,BUTTON_GRAPH_HEIGHT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     m_heightButtonLabelVal = 0;
     UpdateHeightButtonLabel();
-    pButtonSizer->Add(m_pHeightButton, wxSizerFlags().Expand());
+    pButtonSizer->Add(m_pHeightButton, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT, 5));
 
     m_pSettingsButton = new OptionsButton(this, BUTTON_GRAPH_SETTINGS, _("Settings"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     m_pSettingsButton->SetToolTip(_("Graph settings"));
-    pButtonSizer->Add(m_pSettingsButton, wxSizerFlags().Expand());
+    pButtonSizer->Add(m_pSettingsButton, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT, 5));
 
     wxButton *clearButton = new wxButton(this, BUTTON_GRAPH_CLEAR, _("Clear"));
     clearButton->SetToolTip(_("Clear graph data. You can also partially clear the graph by holding down the Ctrl key and clicking on the graph where you want the data to start."));
     clearButton->SetBackgroundStyle(wxBG_STYLE_TRANSPARENT);
-    pButtonSizer->Add(clearButton, wxSizerFlags().Expand());
+    pButtonSizer->Add(clearButton, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT, 5));
 
     m_pCheckboxTrendlines = new wxCheckBox(this,CHECKBOX_GRAPH_TRENDLINES,_("Trendlines"));
 #if defined(__WXOSX__)
@@ -228,7 +228,7 @@ GraphLogWindow::GraphLogWindow(wxWindow *parent) :
 
     pClientSizer->Add(m_pClient, wxSizerFlags().Expand().Proportion(1));
     pClientSizer->Add(m_pControlSizer, wxSizerFlags().Expand().Border(wxRIGHT | wxLEFT | wxBOTTOM, 10));
-    pMainSizer->Add(pButtonSizer, wxSizerFlags().DoubleHorzBorder().Expand());
+    pMainSizer->Add(pButtonSizer, wxSizerFlags().Left().DoubleHorzBorder().Expand());
     pMainSizer->Add(pButtonSizerRow2, wxSizerFlags().Left().DoubleHorzBorder().Expand());
     pMainSizer->Add(pClientSizer, wxSizerFlags().Expand().Proportion(1));
 
